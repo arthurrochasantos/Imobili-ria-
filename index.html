@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CasaSonho | Encontre seu novo lar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#165DFF',
+                        whatsapp: '#25D366',
+                        dark: '#1E293B',
+                        light: '#F8FAFC',
+                        muted: '#64748B'
+                    },
+                    fontFamily: {
+                        display: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'sans-serif']
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .card-hover { transition: all 0.3s ease; cursor: pointer; }
+        .card-hover:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
+        .modal-backdrop { background: rgba(0,0,0,0.6); }
+        .modal-content { animation: modalIn 0.3s ease forwards; }
+        @keyframes modalIn { from { opacity:0; transform:scale(0.95); } to { opacity:1; transform:scale(1); } }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .btn-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(37,211,102,0.3); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(22,93,255,0.3); }
+    </style>
+</head>
+<body class="font-sans text-dark bg-light antialiased">
+
+    <!-- Navegação -->
+    <header class="sticky top-0 z-40 bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-2">
+                <span class="text-primary text-2xl"><i class="fa fa-home"></i></span>
+                <span class="font-display font-bold text-xl">CasaSonho</span>
+            </a>
+            <nav class="hidden md:flex gap-8">
+                <a href="#inicio" class="font-medium hover:text-primary">Início</a>
+                <a href="#imoveis" class="font-medium hover:text-primary">Imóveis</a>
+                <a href="#sobre" class="font-medium hover:text-primary">Sobre Nós</a>
+                <a href="#contato" class="font-medium hover:text-primary">Contato</a>
+            </nav>
+            <a href="tel:+556731234567" class="bg-primary/10 text-primary px-4 py-2 rounded-lg font-medium hidden sm:block">
+                <i class="fa fa-phone"></i> (67) 3123-4567
+            </a>
+        </div>
+    </header>
+
+    <!-- Seção Início -->
+    <section id="inicio" class="bg-gradient-to-r from-blue-500 to-teal-400 text-white py-20">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl">
+                <h1 class="font-display text-4xl md:text-5xl font-bold mb-6">Encontre a casa dos seus sonhos</h1>
+                <p class="text-lg mb-8">Há mais de 12 anos realizando sonhos. As melhores opções de imóveis em Cidade Nova e toda a região.</p>
+                <a href="#imoveis" class="inline-flex items-center gap-2 bg-white text-primary px-8 py-3 rounded-lg font-semibold">
+                    Ver imóveis <i class="fa fa-arrow-down"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Imóveis -->
+    <section id="imoveis" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="font-display text-3xl md:text-4xl font-bold mb-4">Nossos Imóveis</h2>
+                <p class="text-muted">Confira nossa seleção. Temos opções para todos os gostos e orçamentos.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Imóvel 1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover" onclick="abrirModal(0)">
+                    <img src="https://images.unsplash.com/photo-1560448075-bb485b067938?w=600&h=400&fit=crop" alt="Casa - Bairro Central" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-display text-xl font-semibold mb-2">Casa - Bairro Central</h3>
+                        <p class="text-muted text-sm mb-4">Ampla casa no coração da cidade, perto de comércios, escolas e serviços completos.</p>
+                        <div class="flex gap-4 mb-4 text-sm text-muted">
+                            <span><i class="fa fa-bed"></i> 3 Quartos</span>
+                            <span><i class="fa fa-bath"></i> 2 Banheiros</span>
+                            <span><i class="fa fa-car"></i> 2 Vagas</span>
+                        </div>
+                        <p class="text-primary font-bold text-xl">R$ 450.000,00</p>
+                    </div>
+                </div>
+
+                <!-- Imóvel 2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover" onclick="abrirModal(1)">
+                    <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&h=400&fit=crop" alt="Casa - Bairro Industrial" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-display text-xl font-semibold mb-2">Casa - Bairro Industrial</h3>
+                        <p class="text-muted text-sm mb-4">Casa térrea espaçosa com área de lazer, churrasqueira e quintal amplo murado.</p>
+                        <div class="flex gap-4 mb-4 text-sm text-muted">
+                            <span><i class="fa fa-bed"></i> 4 Quartos</span>
+                            <span><i class="fa fa-bath"></i> 3 Banheiros</span>
+                            <span><i class="fa fa-car"></i> 3 Vagas</span>
+                        </div>
+                        <p class="text-primary font-bold text-xl">R$ 780.000,00</p>
+                    </div>
+                </div>
+
+                <!-- Imóvel 3 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover" onclick="abrirModal(2)">
+                    <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&h=400&fit=crop" alt="Sobrado - Jardim Europa" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-display text-xl font-semibold mb-2">Sobrado - Jardim Europa</h3>
+                        <p class="text-muted text-sm mb-4">Sobrado moderno no bairro nobre, acabamento de alto padrão e varanda com vista.</p>
+                        <div class="flex gap-4 mb-4 text-sm text-muted">
+                            <span><i class="fa fa-bed"></i> 5 Quartos</span>
+                            <span><i class="fa fa-bath"></i> 4 Banheiros</span>
+                            <span><i class="fa fa-car"></i> 4 Vagas</span>
+                        </div>
+                        <p class="text-primary font-bold text-xl">R$ 1.250.000,00</p>
+                    </div>
+                </div>
+
+                <!-- Imóvel 4 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover" onclick="abrirModal(3)">
+                    <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&h=400&fit=crop" alt="Casa - Bairro São Cristóvão" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-display text-xl font-semibold mb-2">Casa - Bairro São Cristóvão</h3>
+                        <p class="text-muted text-sm mb-4">Casa simples bem conservada, ótima para primeiro imóvel. Perto de transporte público.</p>
+                        <div class="flex gap-4 mb-4 text-sm text-muted">
+                            <span><i class="fa fa-bed"></i> 2 Quartos</span>
+                            <span><i class="fa fa-bath"></i> 1 Banheiro</span>
+                            <span><i class="fa fa-car"></i> 1 Vaga</span>
+                        </div>
+                        <p class="text-primary font-bold text-xl">R$ 220.000,00</p>
+                    </div>
+                </div>
+
+                <!-- Imóvel 5 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover" onclick="abrirModal(4)">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=400&fit=crop" alt="Casa - Residencial Parque" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-display text-xl font-semibold mb-2">Casa - Residencial Parque</h3>
+                        <p class="text-muted text-sm mb-4">Condomínio fechado com segurança 24h, piscina, academia e área de lazer completa.</p>
+                        <div class="flex gap-4 mb-4 text-sm text-muted">
+                            <span><i class="fa fa-bed"></i> 3 Quartos</span>
+                            <span><i class="fa fa-bath"></i> 2 Banheiros</span>
+                            <span><i class="fa fa-car"></i> 2 Vagas</span>
+                        </div>
+                        <p class="text-primary font-bold text-xl">R$ 680.000,00</p>
+                    </div>
+                </div>
+
+                <!-- Imóvel 6 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover" onclick="abrirModal(5)">
+                    <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&h=400&fit=crop" alt="Chácara - Zona Rural" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-display text-xl font-semibold mb-2">Chácara - Zona Rural</h3>
+                        <p class="text-muted text-sm mb-4">Ampla chácara com área verde, pomar, piscina e casa sede. Ideal para lazer e descanso.</p>
+                        <div class="flex gap-4 mb-4 text-sm text-muted">
+                            <span><i class="fa fa-bed"></i> 4 Quartos</span>
+                            <span><i class="fa fa-bath"></i> 3 Banheiros</span>
+                            <span><i class="fa fa-car"></i> 5 Vagas</span>
+                        </div>
+                        <p class="text-primary font-bold text-xl">R$ 920.000,00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Nós -->
+    <section id="sobre" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="font-display text-3xl md:text-4xl font-bold mb-6 text-center">Sobre a CasaSonho</h2>
+                <p class="text-lg mb-4 text-muted">
+                    Fundada em 2014, a CasaSonho é uma empresa sólida e respeitada no mercado imobiliário de Cidade Nova e região. Nosso compromisso é com a transparência, segurança e satisfação de nossos clientes.
+                </p>
+                <p class="text-lg mb-4 text-muted">
+                    Contamos com uma equipe de corretores credenciados e experientes, prontos para auxiliar você em todas as etapas — desde a escolha do imóvel até a assinatura do contrato.
+                </p>
+                <p class="text-lg text-muted">
+                    Trabalhamos com imóveis de todos os portes e valores, sempre com garantia de documentos em ordem e negociações justas.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé / Contato -->
+    <footer id="contato" class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="font-display text-2xl font-bold mb-4">CasaSonho</h3>
+                    <p class="text-gray-400">Realizando sonhos há mais de 12 anos.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-lg mb-3">Contato</h4>
+                    <p class="mb-2"><i class="fa fa-phone mr-2"></i> (67) 3123-4567</p>
+                    <p class="mb-2"><i class="fa fa-whatsapp mr-2"></i> (67) 98123-4567</p>
+                    <p class="mb-2"><i class="fa fa-envelope mr-2"></i> contato@casasonho.com.br</p>
+                    <p><i class="fa fa-map-marker mr-2"></i> Av. das Flores, 320 - Centro<br>Cidade Nova - Estado Novo, 78000-000</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-lg mb-3">Redes Sociais</h4>
+                    <div class="flex gap-4 text-2xl mt-2">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fa fa-facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fa fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fa fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400 text-sm">
+                <p>CasaSonho Negócios Imobiliários Ltda. | CNPJ: 98.765.432/0001-10 | CRECI/XX 98765</p>
+                <p class="mt-2">© 2026 CasaSonho. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de Detalhes -->
+    <div id="modal" class="fixed inset-0 z-50 hidden">
+        <div class="modal-backdrop absolute inset-0 flex items-center justify-center p-4" onclick="fecharModal()">
+            <div class="modal-content bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto scrollbar-hide relative" onclick="event.stopPropagation()">
+                <button onclick="fecharModal()" class="absolute top-4 right-4 bg-gray-100 w-10 h-10 rounded-full flex items-center justify-center z-10">
+                    <i class="fa fa-times"></i>
+                </button>
+                <div id="conteudo-modal" class="p-6"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Lista com 6 imóveis
+        const imoveis = [
+            {
+                titulo: "Casa - Bairro Central",
+                preco: "R$ 450.000,00",
+                descricao: "Ampla casa arejada no bairro mais procurado da cidade. Próxima a supermercados, escolas, hospitais e transporte público. Conta com sala de estar ampla, cozinha com armários planejados, área de serviço separada e um pequeno quintal com espaço para jardim. Documentação toda em ordem.",
+                quartos: 3, banheiros: 2, vagas: 2, area: "180m²",
+                endereco: "Rua das Acácias, 150 - Bairro Central, Cidade Nova - Estado Novo",
+                foto: "https://images.unsplash.com/photo-1560448075-bb485b067938?w=800&h=500&fit=crop"
+            },
+            {
+                titulo: "Casa - Bairro Industrial",
+                preco: "R$ 780.000,00",
+                descricao: "Espaçosa casa térrea em rua tranquila e sem saída. Possui sala de estar e jantar integradas, cozinha ampla com ilha, área de lazer com churrasqueira e espaço para piscina. O quintal é amplo e totalmente murado, ideal para crianças e animais de estimação. Estacionamento coberto para 3 veículos.",
+                quartos: 4, banheiros: 3, vagas: 3, area: "280m²",
+                endereco: "Av. dos Pioneiros, 412 - Bairro Industrial, Cidade Nova - Estado Novo",
+                foto: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&h=500&fit=crop"
+            },
+            {
+                titulo: "Sobrado - Jardim Europa",
+                preco: "R$ 1.250.000,00",
+                descricao: "Magnífico sobrado localizado no bairro mais nobre. Pavimento inferior: sala de estar, sala de jantar, cozinha totalmente planejada com eletrodomésticos embutidos, escritório e lavabo. No andar superior: suíte master com closet e varanda com vista panorâmica, mais 3 quartos e 2 banheiros sociais. Acabamentos de alto padrão.",
+                quartos: 5, banheiros: 4, vagas: 4, area: "420m²",
+                endereco: "Rua dos Lírios, 880 - Jardim Europa, Cidade Nova - Estado Novo",
+                foto: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=500&fit=crop"
+            },
+            {
+                titulo: "Casa - Bairro São Cristóvão",
+                preco: "R$ 220.000,00",
+                descricao: "Casa de ótimo custo-benefício, bem conservada e pronta para morar. Localizada em bairro residencial consolidado, com transporte público passando na porta. Conta com sala, cozinha, 2 quartos, banheiro social, área de serviço e pátio frontal. Aceita financiamento bancário e FGTS.",
+                quartos: 2, banheiros: 1, vagas: 1, area: "95m²",
+                endereco: "Rua São Cristóvão, 205 - Bairro São Cristóvão, Cidade Nova - Estado Novo",
+                foto: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&h=500&fit=crop"
+            },
+            {
+                titulo: "Casa - Residencial Parque",
+                preco: "R$ 680.000,00",
+                descricao: "Imóvel em um dos melhores condomínios da região, com segurança 24 horas, portaria eletrônica e monitoramento. O condomínio oferece piscina, academia completa, quadra poliesportiva, salão de festas e área verde. A casa possui sala ampla, cozinha planejada, 3 quartos sendo uma suíte com closet e garagem coberta para 2 veículos.",
+                quartos: 3, banheiros: 2, vagas: 2, area: "230m²",
+                endereco: "Residencial Parque - Rua das Palmeiras, 500 - Cidade Nova - Estado Novo",
+                foto: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=500&fit=crop"
+            },
+            {
+                titulo: "Chácara - Zona Rural",
+                preco: "R$ 920.000,00",
+                descricao: "Chácara com área total de 5.000m², repleta de árvores frutíferas e jardins bem cuidados. A casa sede tem ampla sala com lareira, cozinha estilo colonial, 4 quartos sendo uma suíte master com hidromassagem. Área externa com piscina, deck em madeira, churrasqueira completa, pomar variado e espaço para lazer nos fins de semana.",
+                quartos: 4, banheiros: 3, vagas: 5, area: "310m²",
+                endereco: "Estrada do Campo - Km 4, Zona Rural - Cidade Nova - Estado Novo",
+                foto: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=500&fit=crop"
+            }
+        ];
+
+        function abrirModal(indice) {
+            const imovel = imoveis[indice];
+            const modal = document.getElementById('modal');
+            const conteudo = document.getElementById('conteudo-modal');
+
+            const mensagem = encodeURIComponent(`Olá! Tenho interesse no imóvel: ${imovel.titulo} - Valor: ${imovel.preco}`);
+            const linkWhatsApp = `https://wa.me/5567981234567?text=${mensagem}`;
+
+            conteudo.innerHTML = `
+                <h2 class="font-display text-2xl font-bold mb-2">${imovel.titulo}</h2>
+                <p class="text-primary font-bold text-2xl mb-4">${imovel.preco}</p>
+                <img src="${imovel.foto}" alt="${imovel.titulo}" class="w-full h-64 object-cover rounded-xl mb-6">
+                
+                <p class="text-gray-600 mb-6 leading-relaxed">${imovel.descricao}</p>
+                
+                <div class="grid grid-cols-4 gap-4 mb-6 text-center">
+                    <div class="bg-gray-50 p-3 rounded-lg">
+                        <p class="text-sm text-gray-500">Quartos</p>
+        <div class="space-y-3">
+                     <a href="${linkWhatsApp}" target="_blank" class="btn-whatsapp block text-center bg-green-500 text-white py-3 rounded-lg font-semibold">
+                         <i class="fa fa-whatsapp"></i> Falar no WhatsApp
+                     </a>
+                     <a href="tel:+556731234567" class="btn-primary block text-center bg-primary text-white py-3 rounded-lg font-semibold">
+                         <i class="fa fa-phone"></i> Ligar agora
+                     </a>
+                 </div>
+             `;
+             modal.classList.remove('hidden');
+             document.body.style.overflow = 'hidden';
+         }
+         function fecharModal() {
+             document.getElementById('modal').classList.add('hidden');
+             document.body.style.overflow = 'auto';
+         }
+     </script>
+ </body>
+ </html>
